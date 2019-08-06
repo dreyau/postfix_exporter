@@ -7,7 +7,7 @@ RUN apt-get update -qq && apt-get install -qqy \
 RUN go get -v ./...
 RUN go build -ldflags "-linkmode external -extldflags -static"
 
-FROM busybox:latest
+FROM scratch
 
 WORKDIR /
 COPY --from=builder /go/src/github.com/kumina/postfix_exporter/postfix_exporter .
